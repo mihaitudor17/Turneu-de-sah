@@ -18,4 +18,8 @@ public class PersonService {
     public List<Person> getPersons() {
         return personRepository.findAll();
     }
+
+    public void addNewPerson(Person person) {
+        personRepository.save(person);
+    }
 }

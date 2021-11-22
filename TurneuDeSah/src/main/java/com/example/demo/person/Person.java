@@ -2,6 +2,7 @@ package com.example.demo.person;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Date;
 
 @Entity
@@ -141,5 +142,8 @@ public class Person {
 
     public Long getId() {
         return id;
+    }
+    public Integer getAge(){
+        return Period.between(dateOfBirth,LocalDate.now()).getYears();
     }
 }

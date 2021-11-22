@@ -12,7 +12,7 @@ public class PersonConfig {
     @Bean
     CommandLineRunner commandLineRunner(PersonRepository repository) {
         return args -> {
-            Person blaga_mihai = new Person(
+            Person p1 = new Person(
                     "Blaga",
                     "Mihai",
                     "5010514080001",
@@ -21,7 +21,7 @@ public class PersonConfig {
                     "0751515151",
                     true
             );
-            Person antal_eduard = new Person(
+            Person p2 = new Person(
                     "Antal",
                     "Eduard",
                     "5010514080002",
@@ -31,7 +31,7 @@ public class PersonConfig {
                     true
             );
             repository.saveAll(
-                    List.of(blaga_mihai, antal_eduard)
+                    List.of(p1, p2)
             );
         };
     }
