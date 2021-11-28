@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Less go</title>
+    </head>
+    <body>
+        <h2>Manage persons!!!!</h2>
+        <ul>
+            <li th:each="person : ${persons}">
+                <span th:text="${person.name}">Default</span>
+                <span th:text=" ${person.lastName}">Default</span>
+            </li>
+            <li>
+                xd
+            </li>
+        </ul>
+    </body>
+</html>
