@@ -16,10 +16,10 @@ public class IndexController {
         return "redirect:clasament";
     }
 
-    @GetMapping("/clasament")
-    public String clasament() {
-        return "clasament";
-    }
+//    @GetMapping("/clasament")
+//    public String clasament() {
+//        return "clasament";
+//    }
     @GetMapping("/turnee")
     public String turnee() {
         return "turnee";

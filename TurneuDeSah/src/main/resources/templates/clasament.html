@@ -16,6 +16,7 @@
   } 
 </script>
   <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="tableStyle.css">
   <title>Turnee Sah - Clasament</title>
   <link rel="icon" href="icon.jpg" type="image/icon type">
 </head>
@@ -28,11 +29,15 @@
   <a href="adaugare">Adaugare</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
- <li th:each="person : ${persons}">
-     <span th:text="${person.name}">Default</span>
-     <span th:text=" ${person.lastName}">Default</span>
-     <span>turc</span>
- </li>
- <p>turc</p>
+ <table id="customers">
+     <tr>
+         <th>Nume</th>
+         <th>Prenume</th>
+     </tr>
+     <tr th:each="person : ${clasament}">
+         <td th:text=" ${person.lastName}">Default</td>
+         <td th:text="${person.name}">Default</td>
+     </tr>
+ </table>
 </body>
 </html>
