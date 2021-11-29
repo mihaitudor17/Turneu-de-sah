@@ -26,10 +26,10 @@ public class PersonController {
         personService.addNewPerson(person);
     }
 
-    @RequestMapping(value = "/persons")
+    @RequestMapping(value = "/clasament")
     public String getAllPersons(Model model) {
         List<Person> persons = personService.getAllPersons();
-        model.addAttribute("persons", persons);
-        return "persons";
+        model.addAttribute("clasament", persons);
+        return "clasament";
     }
 }

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript">/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+  function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav")
+   {
+    x.className += " responsive";
+   } else 
+   {
+    x.className = "topnav";
+   }
+  } 
+</script>
+  <link rel="stylesheet" href="Style.css">
+  <title>Turnee Sah - Clasament</title>
+  <link rel="icon" href="icon.jpg" type="image/icon type">
+</head>
+<body>
+ <div class="topnav" id="myTopnav">
+  <a href="/" >Acasa</a>
+  <a href="turnee">Toate turneele</a>
+  <a href="clasament" class="active">Clasament participanti</a>
+  <a href="inscriere">Inscriere</a>
+  <a href="adaugare">Adaugare</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+ <li th:each="person : ${persons}">
+     <span th:text="${person.name}">Default</span>
+     <span th:text=" ${person.lastName}">Default</span>
+     <span>turc</span>
+ </li>
+ <p>turc</p>
+</body>
+</html>
