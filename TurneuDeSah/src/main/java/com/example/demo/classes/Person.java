@@ -1,4 +1,4 @@
-package com.example.demo.person;
+package com.example.demo.classes;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -6,7 +6,7 @@ import java.time.Period;
 import java.util.Date;
 
 @Entity
-@Table
+@Table(name = "person")
 public class Person {
     @Id
     @SequenceGenerator(
@@ -25,6 +25,7 @@ public class Person {
     private LocalDate dateOfBirth;
     private String gender;
     private String phoneNumber;
+    private Integer rank;
     private Boolean isActive;
 
     public Person() {
@@ -38,6 +39,7 @@ public class Person {
                   LocalDate dateOfBirth,
                   String gender,
                   String phoneNumber,
+                  Integer rank,
                   Boolean isActive) {
         this.id = id;
         this.lastName = lastName;
@@ -46,6 +48,7 @@ public class Person {
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.phoneNumber = phoneNumber;
+        this.rank = rank;
         this.isActive = isActive;
     }
 
@@ -55,6 +58,7 @@ public class Person {
                   LocalDate dateOfBirth,
                   String gender,
                   String phoneNumber,
+                  Integer rank,
                   Boolean isActive) {
         this.lastName = lastName;
         this.name = name;
@@ -62,6 +66,7 @@ public class Person {
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.phoneNumber = phoneNumber;
+        this.rank = rank;
         this.isActive = isActive;
     }
 
@@ -132,6 +137,7 @@ public class Person {
                 ", dateOfBirth=" + dateOfBirth +
                 ", gender='" + gender + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", rank='" + rank + '\'' +
                 ", isActive=" + isActive +
                 '}';
     }
@@ -143,7 +149,16 @@ public class Person {
     public Long getId() {
         return id;
     }
-    public Integer getAge(){
-        return Period.between(dateOfBirth,LocalDate.now()).getYears();
+
+    public Integer getRank() {
+        return rank;
+    }
+
+    public void setRank(Integer rank) {
+        this.rank = rank;
+    }
+
+    public Integer getAge() {
+        return Period.between(dateOfBirth, LocalDate.now()).getYears();
     }
 }

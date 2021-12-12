@@ -1,4 +1,4 @@
-package com.example.demo.person;
+package com.example.demo.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,17 +13,17 @@ public class IndexController {
     }
     @RequestMapping(value = "/redirect", method = RequestMethod.GET)
     public String redirect() {
-        return "redirect:clasament";
+        return "redirect:turnee";
     }
 
 //    @GetMapping("/clasament")
 //    public String clasament() {
 //        return "clasament";
 //    }
-    @GetMapping("/turnee")
-    public String turnee() {
-        return "turnee";
-    }
+//    @GetMapping("/turnee")
+//    public String turnee() {
+//        return "turnee";
+//    }
     @GetMapping("/adaugare")
     public String adaugare() {
         return "adaugare";
@@ -31,5 +31,9 @@ public class IndexController {
     @GetMapping("/inscriere")
     public String inscriere() {
         return "inscriere";
+    }
+    @GetMapping("/saveUser")
+    public String saveUser() {
+        return "redirect:clasament";
     }
 }

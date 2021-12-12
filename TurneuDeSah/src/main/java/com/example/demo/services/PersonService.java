@@ -1,9 +1,10 @@
-package com.example.demo.person;
+package com.example.demo.services;
 
+import com.example.demo.classes.Person;
+import com.example.demo.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,5 +30,8 @@ public class PersonService {
         personRepository.findAll()
                 .forEach(persons::add);
         return persons;
+    }
+    public Person getPerson(Long id){
+        return personRepository.findById(id).get();
     }
 }
