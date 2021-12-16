@@ -40,9 +40,9 @@ public class PersonController {
 
     @RequestMapping(value = "/saveUser", method=RequestMethod.POST)
     public String save(@ModelAttribute Person person){
-        Person xd= new Person("Dummy", "Dummie", "", LocalDate.now(),"", "",0,false);
-        xd.setName(person.getName());
-        personService.addNewPerson(xd);
+        Person newPerson= new Person("", "", "", LocalDate.now(),"", "",0,false);
+        newPerson.setName(person.getName());
+        personService.addNewPerson(newPerson);
         System.out.println("Lmao");
         return "redirect:clasament";
     }
