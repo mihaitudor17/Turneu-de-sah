@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class IndexController {
-    @RequestMapping("/")
-    public String index(){
-        return "acasa";
-    }
+//    @RequestMapping("/")
+//    public String index(){
+//        return "acasa";
+//    }
     @RequestMapping(value = "/redirect", method = RequestMethod.GET)
     public String redirect() {
         return "redirect:turnee";

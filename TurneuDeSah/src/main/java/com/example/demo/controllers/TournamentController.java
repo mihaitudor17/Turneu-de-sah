@@ -39,4 +39,11 @@ public class TournamentController {
         model.addAttribute("turnee", tournaments);
         return "turnee";
     }
+    @RequestMapping(value = "/")
+    public String getMostRecentTournament(Model model){
+        List<Tournament> recentTournaments = tournamentService.getFutureTournaments();
+        model.addAttribute("acasa", recentTournaments);
+        return "acasa";
+    }
+
 }

@@ -46,9 +46,10 @@ public class PersonController {
         System.out.println("Lmao");
         return "redirect:clasament";
     }
-//    @GetMapping("/clasament/{id}")
-//    public String getPerson(@PathVariable Long id) {
-//        return personService.getPerson(id).toString();
-//    }
+    @GetMapping("/clasament/{id}")
+    public String getPerson(@PathVariable Long id) {
+        System.out.println(id);
+        return "id";
+    }
 
 }
