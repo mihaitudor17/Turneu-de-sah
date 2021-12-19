@@ -7,6 +7,7 @@ import com.example.demo.repositories.TournamentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +31,13 @@ public class TournamentService {
         List<Tournament> tournaments  = new ArrayList<>();
         tournamentRepository.findAll()
                 .forEach(tournaments::add);
+        return tournaments;
+    }
+
+    public List<Tournament> getFutureTournaments(){
+        List<Tournament> tournaments  = new ArrayList<>();
+        tournamentRepository.findByDateGreaterThanEqual(LocalDate.now()).
+                forEach(tournaments::add);
         return tournaments;
     }
     public Tournament getTournament(Long id){
