@@ -15,17 +15,141 @@
     </script>
     <link rel="stylesheet" href="Style.css">
     <link rel="stylesheet" href="tableStyle.css">
-    <title>Turnee Sah - Toate</title>
+    <title>Turnee</title>
     <link rel="icon" href="icon.jpg" type="image/icon type">
+    <style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #333;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #333;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%;  Full height 
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  border: 1px solid #888;
+  margin-left: auto; 
+  margin-right: 0;
+  width: 20%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+</style>
+<link rel="icon" href="icon.jpg" type="image/icon type">
 </head>
 <body>
-<div class="topnav" id="myTopnav">
-    <a href="/">Acasa</a>
-    <a href="turnee" class="active">Toate turneele</a>
-    <a href="clasament">Clasament participanti</a>
-    <a href="inscriere">Inscriere</a>
-    <a href="adaugare">Adaugare</a>
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+ <div class="topnav" id="myTopnav">
+  <a href="/" >Acasa</a>
+  <a href="turnee" class="active">Turnee</a>
+  <a href="clasament">Clasament</a>
+  <a href="inscriere">Inscriere</a>
+  <a onclick="document.getElementById('id01').style.display='block'">Cont</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
 </div>
 <table id="customers">
@@ -42,5 +166,26 @@
         <td th:text="${turneu.prizeMoney}+'€'">Default</td>
     </tr>
 </table>
+<div id="id01" class="modal">
+  <form class="modal-content animate" action="/action_page.php" method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="/img_avatar2.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Nume utilizator</b></label>
+      <input type="text" placeholder="Introduceti utilizator" name="uname" required>
+
+      <label for="psw"><b>Parola</b></label>
+      <input type="password" placeholder="Introduceti parola" name="psw" required>
+      <button type="submit">Inscriere</button>
+      <button type="submit">Autentificare</button>
+    </div>
+    <div class="container" style="background-color:#04aa6d">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+    </div>
+  </form>
+</div>
 </body>
 </html>
