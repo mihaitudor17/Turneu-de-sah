@@ -27,6 +27,8 @@ public class Person {
     private String phoneNumber;
     private Integer rank;
     private Boolean isActive;
+    @ManyToOne
+    private User user;
 
     public Person() {
 
@@ -130,15 +132,16 @@ public class Person {
     @Override
     public String toString() {
         return "Person{" +
-                "personID=" + id +
+                "id=" + id +
                 ", lastName='" + lastName + '\'' +
                 ", name='" + name + '\'' +
                 ", cnp='" + cnp + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", gender='" + gender + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", rank='" + rank + '\'' +
+                ", rank=" + rank +
                 ", isActive=" + isActive +
+                ", user=" + user +
                 '}';
     }
 
@@ -160,5 +163,13 @@ public class Person {
 
     public Integer getAge() {
         return Period.between(dateOfBirth, LocalDate.now()).getYears();
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
