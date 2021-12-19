@@ -1,9 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script type="text/javascript">/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script type="text/javascript">/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
   function myFunction() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav")
@@ -15,12 +24,13 @@
    }
   } 
 </script>
-  <link rel="stylesheet" href="Style.css">
-  <title>Turnee Sah - Inscriere</title>
-  <link rel="icon" href="icon.jpg" type="image/icon type">
-</head>
-<body>
- <div class="topnav" id="myTopnav">
+    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Inscriere</title>
+    <link rel="icon" href="/favicon.ico" type="image/icon type">
+  </head>
+  <body>
+  <div class="topnav" id="myTopnav">
   <a href="/" >Acasa</a>
   <a href="turnee">Toate turneele</a>
   <a href="clasament">Clasament participanti</a>
@@ -28,14 +38,71 @@
   <a href="adaugare">Adaugare</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
- <div>
-     <form action="saveUser" method="post">
-         <div>
-             <label>Name:</label>
-             <input type="text" name="name"></input>
-             <input type="submit" value="Submit"></input>
-         </div>
-     </form>
- </div>
-</body>
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="images/img.png" alt="Image" class="img-fluid">
+        </div>
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="mb-4">
+              <h3>Inscriere turneu</h3>
+            </div>
+            <form  action="#" method="post">
+              <div class="form-group first">
+                <label for="nume">Nume</label>
+                <input type="text" class="form-control" id="nume" autocomplete="off">
+
+              </div>
+              <div class="form-group first">
+                <label for="prenume">Prenume</label>
+                <input type="text" class="form-control" id="prenume" autocomplete="off">
+
+              </div>
+              <div class="form-group">
+                <label for="cnp">CNP</label>
+                <input type="text" class="form-control" id="cnp" pattern="[0-9]+" autocomplete="off">
+              </div>
+              <div class="form-group">
+                <p>
+                   &nbsp;
+               </p>
+               <p>
+                 <label for="data">Data nasterii</label>
+               </p>
+                <input type="date" class="form-control" id="data" autocomplete="off">
+                
+              </div>
+              <div class="form-group">
+                <label for="number">Numar de telefon</label>
+                <input type="text" class="form-control" id="number" pattern="[0-9]+" autocomplete="off">
+              </div>
+              <div class="form-group last mb-4">
+                <label for="rank">Rang</label>
+                <input type="text" class="form-control" id="rank" pattern="[0-9]+" autocomplete="off">
+              </div>
+              <!-- Rounded switch -->
+            <div class="d-flex mb-5 align-items-center">
+              <p><font size="+2"></form>Activ   &nbsp;</font></p>
+              <label class="switch">
+                <span class="caption">Activ</span>
+                <input type="checkbox" checked autocomplete="off">
+                <span class="slider round"></span>
+              </label>
+            </div>
+              <input type="submit" value="Inscriere" class="btn btn-block btn-primary">
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>
