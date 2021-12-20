@@ -84,7 +84,7 @@ span.psw {
   left: 0;
   top: 0;
   width: 100%; /* Full width */
-  height: 100%;  Full height 
+  height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -155,7 +155,7 @@ span.psw {
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
 <div id="id01" class="modal">
-  <form class="modal-content animate" action="/action_page.php" method="post">
+  <form class="modal-content animate" method="post">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
       <img src="/img_avatar2.png" alt="Avatar" class="avatar">
@@ -163,12 +163,12 @@ span.psw {
 
     <div class="container">
       <label for="uname"><b>Nume utilizator</b></label>
-      <input type="text" placeholder="Introduceti utilizator" name="uname" required>
+      <input type="text" placeholder="Introduceti utilizator" id="uname" name="username" required>
 
       <label for="psw"><b>Parola</b></label>
-      <input type="password" placeholder="Introduceti parola" name="psw" required>
-      <button type="submit">Inscriere</button>
-      <button type="submit">Autentificare</button>
+      <input type="password" placeholder="Introduceti parola" id="psw" name="password" required>
+      <button type="submit" formaction="loginUser">Inscriere</button>
+      <button type="submit" formaction="saveUser">Autentificare</button>
     </div>
     <div class="container" style="background-color:#04aa6d">
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
