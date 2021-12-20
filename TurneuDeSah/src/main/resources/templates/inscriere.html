@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -173,20 +173,18 @@ span.psw {
               <div class="mb-4">
               <h3>Inscriere turneu</h3>
             </div>
-            <form  action="#" method="post">
+            <form  action="savePerson" method="post">
               <div class="form-group first">
-                <label for="nume">Nume</label>
-                <input type="text" class="form-control" id="nume" autocomplete="off">
-
+                <label for="name">Nume</label>
+                <input type="text" class="form-control" id="name" name="lastName" autocomplete="off">
               </div>
               <div class="form-group first">
                 <label for="prenume">Prenume</label>
-                <input type="text" class="form-control" id="prenume" autocomplete="off">
-
+                <input type="text" class="form-control" id="prenume" name="name" autocomplete="off">
               </div>
               <div class="form-group">
                 <label for="cnp">CNP</label>
-                <input type="text" class="form-control" id="cnp" pattern="[0-9]+" autocomplete="off">
+                <input type="text" class="form-control" id="cnp" name="cnp" pattern="[0-9]+" autocomplete="off">
               </div>
               <div class="form-group">
                 <p>
@@ -195,23 +193,23 @@ span.psw {
                <p>
                  <label for="data">Data nasterii</label>
                </p>
-                <input type="date" class="form-control" id="data" autocomplete="off">
+                <input type="date" class="form-control" id="data" name="dateOfBirth" autocomplete="off">
                 
               </div>
               <div class="form-group">
                 <label for="number">Numar de telefon</label>
-                <input type="text" class="form-control" id="number" pattern="[0-9]+" autocomplete="off">
+                <input type="text" class="form-control" id="number" name="phoneNumber" pattern="[0-9]+" autocomplete="off">
               </div>
               <div class="form-group last mb-4">
                 <label for="rank">Rang</label>
-                <input type="text" class="form-control" id="rank" pattern="[0-9]+" autocomplete="off">
+                <input type="text" class="form-control" id="rank" name="rank" pattern="[0-9]+" autocomplete="off">
               </div>
               <!-- Rounded switch -->
             <div class="d-flex mb-5 align-items-center">
               <p><font size="+2">Activ   &nbsp;</font></p>
               <label class="switch">
                 <span class="caption">Activ</span>
-                <input type="checkbox" checked autocomplete="off">
+                <input type="checkbox" name="isActive" checked autocomplete="off">
                 <span class="slider round"></span>
               </label>
             </div>

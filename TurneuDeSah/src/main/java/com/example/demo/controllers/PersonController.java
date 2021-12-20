@@ -38,10 +38,20 @@ public class PersonController {
         return "clasament";
     }
 
-    @RequestMapping(value = "/saveUser", method=RequestMethod.POST)
+    @RequestMapping(value = "/savePerson", method=RequestMethod.POST)
     public String save(@ModelAttribute Person person){
-        Person newPerson= new Person("", "", "", LocalDate.now(),"", "",0,false);
+        System.out.println("Das what i get");
+        System.out.println(person.getActive());
+        Person newPerson= new Person();
         newPerson.setName(person.getName());
+        newPerson.setLastName(person.getLastName());
+        newPerson.setCnp(person.getCnp());
+        newPerson.setDateOfBirth(person.getDateOfBirth());
+        //newPerson.setGender();
+        newPerson.setPhoneNumber(person.getPhoneNumber());
+        newPerson.setRank(person.getRank());
+        newPerson.setActive(person.getActive());
+        //baga si user
         personService.addNewPerson(newPerson);
         return "redirect:clasament";
     }

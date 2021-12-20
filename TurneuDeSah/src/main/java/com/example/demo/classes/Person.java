@@ -1,5 +1,7 @@
 package com.example.demo.classes;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
@@ -22,11 +24,12 @@ public class Person {
     private String lastName; //nume de familie
     private String name;
     private String cnp;
+    @DateTimeFormat(pattern= "yyyy-MM-dd")
     private LocalDate dateOfBirth;
     private String gender;
     private String phoneNumber;
     private Integer rank;
-    private Boolean isActive;
+    private boolean isActive;
     @ManyToOne
     private User user;
 
@@ -42,7 +45,7 @@ public class Person {
                   String gender,
                   String phoneNumber,
                   Integer rank,
-                  Boolean isActive) {
+                  boolean isActive) {
         this.id = id;
         this.lastName = lastName;
         this.name = name;
@@ -61,7 +64,7 @@ public class Person {
                   String gender,
                   String phoneNumber,
                   Integer rank,
-                  Boolean isActive) {
+                  boolean isActive) {
         this.lastName = lastName;
         this.name = name;
         this.cnp = cnp;
@@ -96,7 +99,7 @@ public class Person {
         return phoneNumber;
     }
 
-    public Boolean getActive() {
+    public boolean getActive() {
         return isActive;
     }
 
@@ -125,7 +128,7 @@ public class Person {
         this.phoneNumber = phoneNumber;
     }
 
-    public void setActive(Boolean active) {
+    public void setActive(boolean active) {
         isActive = active;
     }
 
