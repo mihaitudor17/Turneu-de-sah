@@ -39,10 +39,18 @@ public class PersonController {
     }
 
     @RequestMapping(value = "/savePerson", method=RequestMethod.POST)
-    public String save(@ModelAttribute Person person){
+    public String save(@ModelAttribute Person person, @RequestParam(value = "isActive", required = false)String checkboxValue){
         System.out.println("Das what i get");
         System.out.println(person.getActive());
         Person newPerson= new Person();
+        if(checkboxValue != null)
+        {
+            newPerson.setActive(true);
+        }
+        else
+        {
+            newPerson.setActive(false);
+        }
         newPerson.setName(person.getName());
         newPerson.setLastName(person.getLastName());
         newPerson.setCnp(person.getCnp());
@@ -50,7 +58,6 @@ public class PersonController {
         //newPerson.setGender();
         newPerson.setPhoneNumber(person.getPhoneNumber());
         newPerson.setRank(person.getRank());
-        newPerson.setActive(person.getActive());
         //baga si user
         personService.addNewPerson(newPerson);
         return "redirect:clasament";
