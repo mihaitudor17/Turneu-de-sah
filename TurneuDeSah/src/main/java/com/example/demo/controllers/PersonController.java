@@ -37,7 +37,6 @@ public class PersonController {
         model.addAttribute("clasament", persons);
         return "clasament";
     }
-
     @RequestMapping(value = "/savePerson", method=RequestMethod.POST)
     public String save(@ModelAttribute Person person, @RequestParam(value = "isActive", required = false)String checkboxValue){
         System.out.println("Das what i get");
