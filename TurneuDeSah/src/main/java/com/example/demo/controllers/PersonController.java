@@ -43,7 +43,6 @@ public class PersonController {
         Person newPerson= new Person("", "", "", LocalDate.now(),"", "",0,false);
         newPerson.setName(person.getName());
         personService.addNewPerson(newPerson);
-        System.out.println("Lmao");
         return "redirect:clasament";
     }
     @GetMapping("/clasament/{id}")
