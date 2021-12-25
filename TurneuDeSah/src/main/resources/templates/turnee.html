@@ -201,7 +201,7 @@ span.psw {
                         <th style="background-color:dodgerblue">Numar de telefon</th>
                     </tr>
 <!--                    Afiseaza participantii la turneul respectiv-->
-                    <tr th:each="person : ${clasament}">
+                    <tr th:each="person : ${persoane}">
                         <td th:text="${person.rank}">Default</td>
                         <td th:text=" ${person.lastName}">Default</td>
                         <td th:text="${person.name}">Default</td>
@@ -221,15 +221,15 @@ span.psw {
       <img src="/img_avatar2.png" alt="Avatar" class="avatar">
     </div>
 
-    <div class="container">
-      <label for="uname"><b>Nume utilizator</b></label>
-      <input type="text" placeholder="Introduceti utilizator" name="uname" required>
+      <div class="container">
+          <label for="uname"><b>Nume utilizator</b></label>
+          <input type="text" placeholder="Introduceti utilizator" id="uname" name="username" required>
 
-      <label for="psw"><b>Parola</b></label>
-      <input type="password" placeholder="Introduceti parola" name="psw" required>
-      <button type="submit">Inscriere</button>
-      <button type="submit">Autentificare</button>
-    </div>
+          <label for="psw"><b>Parola</b></label>
+          <input type="password" placeholder="Introduceti parola" id="psw" name="password" required>
+          <button type="submit" formaction="loginUser">Inscriere</button>
+          <button type="submit" formaction="saveUser">Autentificare</button>
+      </div>
     <div class="container" style="background-color:#04aa6d">
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
     </div>

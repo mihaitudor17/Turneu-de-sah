@@ -33,17 +33,23 @@ public class TournamentController {
         tournamentService.addNewTournament(tournament);
     }
 
-    @RequestMapping(value = "/turnee")
-    public String getAllTournaments(Model model) {
-        List<Tournament> tournaments = tournamentService.getAllTournaments();
-        model.addAttribute("turnee", tournaments);
-        return "turnee";
-    }
-    @RequestMapping(value = "/")
-    public String getMostRecentTournament(Model model){
+//    @RequestMapping(value = "/turnee")
+//    public String getAllTournaments(Model model) {
+//        List<Tournament> tournaments = tournamentService.getAllTournaments();
+//        model.addAttribute("turnee", tournaments);
+//        return "turnee";
+//    }
+
+//    @RequestMapping(value = "/")
+//    public String getMostRecentTournament(Model model){
+//        List<Tournament> recentTournaments = tournamentService.getFutureTournaments();
+//        model.addAttribute("acasa", recentTournaments);
+//        return "acasa";
+//    }
+
+    public List<Tournament> getFutureTournaments(){
         List<Tournament> recentTournaments = tournamentService.getFutureTournaments();
-        model.addAttribute("acasa", recentTournaments);
-        return "acasa";
+        return recentTournaments;
     }
 
 }
