@@ -27,4 +27,7 @@ public class UserService {
     public Optional<User> getUserByUsernameAndPassword(String username, String password){
         return this.userRepository.findByUsernameAndPassword(username,password);
     }
+    public Optional<User> getUserByUsername(String username){
+        return this.userRepository.findByUsername(username);
+    }
 }

@@ -30,13 +30,13 @@ public class PersonController {
 //        personService.addNewPerson(person);
 //    }
 
-    @RequestMapping(value = "/clasament")
-    public String getAllPersons(Model model) {
-        List<Person> persons = personService.getAllPersons();
-        persons.sort((Person p1, Person p2)->p2.getRank()-p1.getRank());
-        model.addAttribute("clasament", persons);
-        return "clasament";
-    }
+//    @RequestMapping(value = "/clasament")
+//    public String getAllPersons(Model model) {
+//        List<Person> persons = personService.getAllPersons();
+//        persons.sort((Person p1, Person p2)->p2.getRank()-p1.getRank());
+//        model.addAttribute("clasament", persons);
+//        return "clasament";
+//    }
 
 //    @RequestMapping(value = "/savePerson", method=RequestMethod.POST)
 //    public String save(@ModelAttribute Person person, @RequestParam(value = "isActive", required = false)String checkboxValue){
