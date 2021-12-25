@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.Optional;
+
 @Controller
 public class UserController {
     private final UserService userService;
@@ -18,16 +20,20 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "/loginUser", method= RequestMethod.POST)
+    @RequestMapping(value = "/loginUser", method = RequestMethod.POST)
     public String login(@ModelAttribute User user) {
-
+        Optional<User> login = userService.getUserByUsernameAndPassword(user.getUsername(), user.getPassword());
+        if(!login.isPresent()){
+            return "redirect:usersauparolaincorecta";
+        }
+        System.out.println(login.get().toString());
         return "redirect:";
     }
 
-    @RequestMapping(value = "/saveUser", method= RequestMethod.POST)
+    @RequestMapping(value = "/saveUser", method = RequestMethod.POST)
     public String save(@ModelAttribute User user) {
         System.out.println(user.toString());
-        User newUser=new User();
+        User newUser = new User();
         System.out.println(newUser.toString());
         newUser.setUsername(user.getUsername());
         newUser.setPassword(user.getPassword());
