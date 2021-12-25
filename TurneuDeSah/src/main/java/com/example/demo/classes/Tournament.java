@@ -3,6 +3,8 @@ package com.example.demo.classes;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "tournament")
@@ -24,6 +26,12 @@ public class Tournament {
     private double prizeMoney;
     private String phoneNumber;
     private Boolean isActive;
+    @ManyToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name="participate",
+            joinColumns = {@JoinColumn(name="tournament_id")},
+            inverseJoinColumns = {@JoinColumn(name="person_id")}
+    )
+    private Set<Person> persons=new HashSet<>();
 
     public Tournament() {
     }
@@ -35,6 +43,27 @@ public class Tournament {
         this.prizeMoney = prizeMoney;
         this.phoneNumber = phoneNumber;
         this.isActive = isActive;
+    }
+
+    public Tournament(String name, LocalDate date, LocalTime time, double prizeMoney, String phoneNumber, Boolean isActive, Set<Person> persons) {
+        this.name = name;
+        this.date = date;
+        this.time = time;
+        this.prizeMoney = prizeMoney;
+        this.phoneNumber = phoneNumber;
+        this.isActive = isActive;
+        this.persons = persons;
+    }
+
+    public Tournament(Long id, String name, LocalDate date, LocalTime time, double prizeMoney, String phoneNumber, Boolean isActive, Set<Person> persons) {
+        this.id = id;
+        this.name = name;
+        this.date = date;
+        this.time = time;
+        this.prizeMoney = prizeMoney;
+        this.phoneNumber = phoneNumber;
+        this.isActive = isActive;
+        this.persons = persons;
     }
 
     public Tournament(Long id, String name, LocalDate date, LocalTime time, double prizeMoney, String phoneNumber, Boolean isActive) {
@@ -114,6 +143,14 @@ public class Tournament {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", isActive=" + isActive +
                 '}';
+    }
+
+    public Set<Person> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(Set<Person> persons) {
+        this.persons = persons;
     }
 }
 

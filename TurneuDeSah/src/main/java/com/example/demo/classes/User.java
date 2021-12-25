@@ -1,6 +1,8 @@
 package com.example.demo.classes;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "chessUser")

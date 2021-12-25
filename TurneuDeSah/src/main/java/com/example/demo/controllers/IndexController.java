@@ -1,13 +1,16 @@
 package com.example.demo.controllers;
 
+import com.example.demo.classes.Person;
+import com.example.demo.classes.Tournament;
 import com.example.demo.services.PersonService;
 import com.example.demo.services.TournamentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class IndexController {
@@ -27,7 +30,6 @@ public class IndexController {
     @RequestMapping("/")
     public String index(Model model){
         model.addAttribute("acasa",tournamentService.getFutureTournaments());
-        model.addAttribute("persoane",personService.getAllPersons());
         return "acasa";
     }
     @RequestMapping(value = "/redirect", method = RequestMethod.GET)
@@ -43,7 +45,6 @@ public class IndexController {
     @RequestMapping("/turnee")
     public String turnee(Model model) {
         model.addAttribute("turnee",tournamentService.getAllTournaments());
-        model.addAttribute("persoane",personService.getAllPersons());
         return "turnee";
     }
     @GetMapping("/inscriere")
@@ -52,6 +53,30 @@ public class IndexController {
     }
     @GetMapping("/saveUser")
     public String saveUser() {
+        return "redirect:clasament";
+    }
+    @RequestMapping(value = "/savePerson", method=RequestMethod.POST)
+    public String save(@ModelAttribute Person person, @RequestParam(value = "isActive", required = false)String checkboxValue){
+        Person newPerson= new Person();
+        if(checkboxValue != null)
+        {
+            newPerson.setActive(true);
+        }
+        else
+        {
+            newPerson.setActive(false);
+        }
+        newPerson.setName(person.getName());
+        newPerson.setLastName(person.getLastName());
+        newPerson.setCnp(person.getCnp());
+        newPerson.setDateOfBirth(person.getDateOfBirth());
+        //newPerson.setGender();
+        newPerson.setPhoneNumber(person.getPhoneNumber());
+        newPerson.setRank(person.getRank());
+        //baga si user
+        newPerson.getTournaments().add(tournamentService.getTournament(1L));
+        tournamentService.getTournament(1L).getPersons().add(newPerson);
+        personService.addNewPerson(newPerson);
         return "redirect:clasament";
     }
 }

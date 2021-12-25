@@ -1,12 +1,12 @@
 package com.example.demo.services;
 
 import com.example.demo.classes.Person;
+import com.example.demo.classes.Tournament;
 import com.example.demo.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class PersonService {
@@ -34,4 +34,10 @@ public class PersonService {
     public Person getPerson(Long id){
         return personRepository.findById(id).get();
     }
+
+//    public List<Person> getParticipants(Long tournamentId){
+//        List<Person> participants=new ArrayList<>();
+//        Tournament tournament=tour
+//                return participants;
+//    }
 }

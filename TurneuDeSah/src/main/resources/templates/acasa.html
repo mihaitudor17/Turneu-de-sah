@@ -224,7 +224,7 @@ span.psw {
                              <th style="background-color:dodgerblue">Numar de telefon</th>
                          </tr>
                          <!--                    Afiseaza participantii la turneul respectiv-->
-                         <tr th:each="person : ${persoane}">
+                         <tr th:each="person : ${turneu.persons}">
                              <td th:text="${person.rank}">Default</td>
                              <td th:text=" ${person.lastName}">Default</td>
                              <td th:text="${person.name}">Default</td>

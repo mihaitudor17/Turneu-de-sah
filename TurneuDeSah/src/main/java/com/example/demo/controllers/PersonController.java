@@ -37,30 +37,30 @@ public class PersonController {
         model.addAttribute("clasament", persons);
         return "clasament";
     }
-    @RequestMapping(value = "/savePerson", method=RequestMethod.POST)
-    public String save(@ModelAttribute Person person, @RequestParam(value = "isActive", required = false)String checkboxValue){
-        System.out.println("Das what i get");
-        System.out.println(person.getActive());
-        Person newPerson= new Person();
-        if(checkboxValue != null)
-        {
-            newPerson.setActive(true);
-        }
-        else
-        {
-            newPerson.setActive(false);
-        }
-        newPerson.setName(person.getName());
-        newPerson.setLastName(person.getLastName());
-        newPerson.setCnp(person.getCnp());
-        newPerson.setDateOfBirth(person.getDateOfBirth());
-        //newPerson.setGender();
-        newPerson.setPhoneNumber(person.getPhoneNumber());
-        newPerson.setRank(person.getRank());
-        //baga si user
-        personService.addNewPerson(newPerson);
-        return "redirect:clasament";
-    }
+
+//    @RequestMapping(value = "/savePerson", method=RequestMethod.POST)
+//    public String save(@ModelAttribute Person person, @RequestParam(value = "isActive", required = false)String checkboxValue){
+//        Person newPerson= new Person();
+//        if(checkboxValue != null)
+//        {
+//            newPerson.setActive(true);
+//        }
+//        else
+//        {
+//            newPerson.setActive(false);
+//        }
+//        newPerson.setName(person.getName());
+//        newPerson.setLastName(person.getLastName());
+//        newPerson.setCnp(person.getCnp());
+//        newPerson.setDateOfBirth(person.getDateOfBirth());
+//        //newPerson.setGender();
+//        newPerson.setPhoneNumber(person.getPhoneNumber());
+//        newPerson.setRank(person.getRank());
+//        //baga si user
+//        newPerson.getTournaments().add();
+//        personService.addNewPerson(newPerson);
+//        return "redirect:clasament";
+//    }
     @GetMapping("/clasament/{id}")
     public String getPerson(@PathVariable Long id) {
         System.out.println(id);

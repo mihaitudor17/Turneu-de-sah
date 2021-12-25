@@ -6,6 +6,8 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "person")
@@ -32,6 +34,8 @@ public class Person {
     private boolean isActive;
     @ManyToOne
     private User user;
+    @ManyToMany(fetch=FetchType.LAZY,cascade = CascadeType.ALL, mappedBy="persons")
+    private Set<Tournament> tournaments=new HashSet<>();
 
     public Person() {
 
@@ -73,6 +77,19 @@ public class Person {
         this.phoneNumber = phoneNumber;
         this.rank = rank;
         this.isActive = isActive;
+    }
+
+    public Person(String lastName, String name, String cnp, LocalDate dateOfBirth, String gender, String phoneNumber, Integer rank, boolean isActive, User user, Set<Tournament> tournaments) {
+        this.lastName = lastName;
+        this.name = name;
+        this.cnp = cnp;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.phoneNumber = phoneNumber;
+        this.rank = rank;
+        this.isActive = isActive;
+        this.user = user;
+        this.tournaments = tournaments;
     }
 
     public String getLastName() {
@@ -174,5 +191,13 @@ public class Person {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Set<Tournament> getTournaments() {
+        return tournaments;
+    }
+
+    public void setTournaments(Set<Tournament> tournaments) {
+        this.tournaments = tournaments;
     }
 }
