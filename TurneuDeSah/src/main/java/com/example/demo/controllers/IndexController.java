@@ -68,6 +68,7 @@ public class IndexController {
     @GetMapping("/inscriere")
     public String inscriere(Model model) {
         model.addAttribute("currentUser", currentUser);
+        model.addAttribute("futureTournaments", tournamentService.getFutureTournaments());
         return "inscriere";
     }
 
