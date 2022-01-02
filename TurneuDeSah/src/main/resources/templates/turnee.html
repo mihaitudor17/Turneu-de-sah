@@ -191,7 +191,7 @@ span.psw {
         </tr>
         <tr>
             <td colspan="4">
-            <button type="button" class="collapsible" style="width:11%">Apasa aici pentru mai multe detalii</button>
+            <button type="button" class="collapsible" style="width:5%">Participanti</button>
             <div class="content">
                 <table style="width: 100%">
                     <tr>
@@ -211,6 +211,32 @@ span.psw {
                     </tr>
                 </table>
             </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <button type="button" class="collapsible" style="width:5%">Partide</button>
+                <div class="content">
+                    <table style="width: 100%">
+                        <tr>
+                            <th style="background-color:dodgerblue">Culoare</th>
+                            <th style="background-color:dodgerblue">Nume</th>
+                            <th style="background-color:dodgerblue">Prenume</th>
+                            <th style="background-color:dodgerblue">Culoare</th>
+                            <th style="background-color:dodgerblue">Nume</th>
+                            <th style="background-color:dodgerblue">Prenume</th>
+                            <th style="background-color:dodgerblue">Castigator</th>
+                        </tr>
+                        <!--                    Afiseaza participantii la turneul respectiv-->
+                        <tr th:each="person : ${turneu.persons}">
+                            <td th:text="${person.rank}">Default</td>
+                            <td th:text=" ${person.lastName}">Default</td>
+                            <td th:text="${person.name}">Default</td>
+                            <td th:text="${person.age}">Default</td>
+                            <td th:text="${person.phoneNumber}">Default</td>
+                        </tr>
+                    </table>
+                </div>
             </td>
         </tr>
     </th:block>
