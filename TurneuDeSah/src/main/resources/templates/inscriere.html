@@ -264,27 +264,19 @@ span.psw {
                 <label for="rank">Rang</label>
                 <input type="text" class="form-control" id="rank" name="rank" pattern="[0-9]+" autocomplete="off">
               </div>
-<!--&lt;!&ndash;              <div class="form-group last mb-4">&ndash;&gt;-->
-<!--              <div class="wrapper"><select name="" id="" class="form-control" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>-->
-<!--                <option th:each="i : ${futureTournaments}" th:value="${i}" th:text="${i.name}">-->
-<!--              </select>-->
-<!--              </div>-->
-<!--              &lt;!&ndash;</div>&ndash;&gt;-->
               <div class="form-group">
-<!--                <label>Gen</label>-->
-                <p style="font-size: larger">
-                  Gen
-                </p>
-                <select style="font-size: large">
+                <p style="font-size: larger">Gen</p>
+                <select style="font-size: large" name="gender">
                   <option>Barbat</option>
-                <option>Femeie</option>
-                <option>Altceva</option></select>
+                  <option>Femeie</option>
+                  <option>Altceva</option>
+                </select>
               </div>
               <div class="form-group last mb-4">
                 <p style="font-size: larger">
                   Turneu
                 </p>
-                <select style="font-size: large"><option th:each="i : ${futureTournaments}" th:value="${i}" th:text="${i.name}"></select>
+                <select style="font-size: large" name="selectedTournament"><option th:each="i : ${futureTournaments}" th:value="${i.id}" th:text="${i.name}"></select>
               </div>
               <!-- Rounded switch -->
             <div class="d-flex mb-5 align-items-center">

@@ -73,7 +73,9 @@ public class IndexController {
     }
 
     @RequestMapping(value = "/savePerson", method = RequestMethod.POST)
-    public String savePerson(@ModelAttribute Person person, @RequestParam(value = "isActive", required = false) String checkboxValue) {
+    public String savePerson(@ModelAttribute Person person,
+                             @RequestParam(value = "isActive", required = false) String checkboxValue,
+                             @RequestParam(value = "selectedTournament", required = false) Long selectedTournament) {
         if(currentUser.getId()==null){
             return "redirect:trebuie_sa_fi_logat_mai_intai!";
         }
@@ -87,12 +89,12 @@ public class IndexController {
         newPerson.setLastName(person.getLastName());
         newPerson.setCnp(person.getCnp());
         newPerson.setDateOfBirth(person.getDateOfBirth());
-        //newPerson.setGender();
+        newPerson.setGender(person.getGender());
         newPerson.setPhoneNumber(person.getPhoneNumber());
         newPerson.setRank(person.getRank());
         newPerson.setUser(currentUser);
-        newPerson.getTournaments().add(tournamentService.getTournament(1L));
-        tournamentService.getTournament(1L).getPersons().add(newPerson);
+        newPerson.getTournaments().add(tournamentService.getTournament(selectedTournament));
+        tournamentService.getTournament(selectedTournament).getPersons().add(newPerson);
         personService.addNewPerson(newPerson);
         return "redirect:clasament";
     }
