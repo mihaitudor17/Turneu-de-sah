@@ -121,5 +121,12 @@ public class IndexController {
         userService.addNewUser(newUser);
         return "redirect:";
     }
-
+    @RequestMapping(value = "/resetCurrentUser", method = RequestMethod.POST)
+    public String resetCurrentUser() {
+        currentUser.setId(null);
+        currentUser.setUsername("");
+        currentUser.setPassword("");
+        currentUser.setAdmin(false);
+        return "redirect:";
+    }
 }

@@ -186,15 +186,15 @@ span.psw {
 
     <div class="container">
       <label for="uname"><b>Nume utilizator</b></label>
-      <input type="text" placeholder="Introduceti utilizator" id="uname" name="username" required>
+      <input type="text" placeholder="Introduceti utilizator" id="uname" name="username">
 
       <label for="psw"><b>Parola</b></label>
-      <input type="password" placeholder="Introduceti parola" id="psw" name="password" required>
+      <input type="password" placeholder="Introduceti parola" id="psw" name="password">
       <button type="submit" formaction="loginUser">Autentificare</button>
       <button type="submit" formaction="saveUser">Inscriere</button>
     </div>
-    <div class="container" style="background-color:#04aa6d">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+    <div class="container" style="background-color:#04aa6d" th:if="${currentUser.getId()!=null}">
+        <button type="submit" formaction="resetCurrentUser"  class="cancelbtn">Deconectare</button>
     </div>
   </form>
 </div>
