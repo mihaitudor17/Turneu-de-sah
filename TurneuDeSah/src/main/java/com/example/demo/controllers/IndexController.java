@@ -2,7 +2,6 @@ package com.example.demo.controllers;
 
 import com.example.demo.classes.Person;
 import com.example.demo.classes.User;
-import com.example.demo.repositories.UserRepository;
 import com.example.demo.services.PersonService;
 import com.example.demo.services.TournamentService;
 import com.example.demo.services.UserService;
@@ -70,11 +69,6 @@ public class IndexController {
     public String inscriere(Model model) {
         model.addAttribute("currentUser", currentUser);
         return "inscriere";
-    }
-
-    @GetMapping("/saveUser")
-    public String saveUser() {
-        return "redirect:clasament";
     }
 
     @RequestMapping(value = "/savePerson", method = RequestMethod.POST)
