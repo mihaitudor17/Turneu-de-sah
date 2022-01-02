@@ -112,7 +112,7 @@ public class IndexController {
     @RequestMapping(value = "/saveUser", method = RequestMethod.POST)
     public String save(@ModelAttribute User user) {
         if(userService.getUserByUsername(user.getUsername()).isPresent()){
-            return "redirect:usernamealreadytaken";
+            return "redirect:";
         }
         User newUser = new User();
         newUser.setUsername(user.getUsername());

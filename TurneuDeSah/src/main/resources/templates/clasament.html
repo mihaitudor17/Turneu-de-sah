@@ -149,7 +149,8 @@ span.psw {
   <a href="turnee">Turnee</a>
   <a href="clasament" class="active">Clasament</a>
   <a href="inscriere">Inscriere</a>
-  <a onclick="document.getElementById('id01').style.display='block'">Cont</a>
+     <a onclick="document.getElementById('id01').style.display='block'"> <span th:if="${currentUser.getId() == null}">
+      Cont</span><span th:unless="${currentUser.getId() == null}"><span th:text="${currentUser.username}">Default</span></span></a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
 <div id="id01" class="modal">
@@ -191,8 +192,5 @@ span.psw {
      </tr>
  </table>
 </div>
- <div>
-     <span th:text="${currentUser.username}">Default</span>
- </div>
 </body>
 </html>
