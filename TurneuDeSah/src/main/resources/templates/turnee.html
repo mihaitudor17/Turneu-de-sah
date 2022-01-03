@@ -25,7 +25,8 @@
             padding: 18px;
             width: 100%;
             border: none;
-            text-align: left;
+            clear:left;
+            text-align: center;
             outline: none;
             font-size: 15px;
         }
@@ -40,145 +41,145 @@
             overflow: hidden;
             background-color: #f1f1f1;
         }
-body {font-family: Arial, Helvetica, sans-serif;}
+        body {font-family: Arial, Helvetica, sans-serif;}
 
-/* Full-width input fields */
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
+        /* Full-width input fields */
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
 
-/* Set a style for all buttons */
-button {
-  background-color: #333;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
+        /* Set a style for all buttons */
+        button {
+            background-color: #333;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
 
-button:hover {
-  opacity: 0.8;
-}
+        button:hover {
+            opacity: 0.8;
+        }
 
-/* Extra styles for the cancel button */
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #333;
-}
+        /* Extra styles for the cancel button */
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #333;
+        }
 
-/* Center the image and position the close button */
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-  position: relative;
-}
+        /* Center the image and position the close button */
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+            position: relative;
+        }
 
-img.avatar {
-  width: 40%;
-  border-radius: 50%;
-}
+        img.avatar {
+            width: 40%;
+            border-radius: 50%;
+        }
 
-.container {
-  padding: 16px;
-}
+        .container {
+            padding: 16px;
+        }
 
-span.psw {
-  float: right;
-  padding-top: 16px;
-}
+        span.psw {
+            float: right;
+            padding-top: 16px;
+        }
 
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%;  /*Full height*/
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px;
-}
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%;  /*Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            padding-top: 60px;
+        }
 
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  border: 1px solid #888;
-  margin-left: auto; 
-  margin-right: 0;
-  width: 20%; /* Could be more or less, depending on screen size */
-}
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            border: 1px solid #888;
+            margin-left: auto;
+            margin-right: 0;
+            width: 20%; /* Could be more or less, depending on screen size */
+        }
 
-/* The Close Button (x) */
-.close {
-  position: absolute;
-  right: 25px;
-  top: 0;
-  color: #000;
-  font-size: 35px;
-  font-weight: bold;
-}
+        /* The Close Button (x) */
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 0;
+            color: #000;
+            font-size: 35px;
+            font-weight: bold;
+        }
 
-.close:hover,
-.close:focus {
-  color: red;
-  cursor: pointer;
-}
+        .close:hover,
+        .close:focus {
+            color: red;
+            cursor: pointer;
+        }
 
-/* Add Zoom Animation */
-.animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
-}
+        /* Add Zoom Animation */
+        .animate {
+            -webkit-animation: animatezoom 0.6s;
+            animation: animatezoom 0.6s
+        }
 
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
-  to {-webkit-transform: scale(1)}
-}
-  
-@keyframes animatezoom {
-  from {transform: scale(0)} 
-  to {transform: scale(1)}
-}
+        @-webkit-keyframes animatezoom {
+            from {-webkit-transform: scale(0)}
+            to {-webkit-transform: scale(1)}
+        }
 
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-     display: block;
-     float: none;
-  }
-  .cancelbtn {
-     width: 100%;
-  }
-}
-</style>
-<link rel="icon" href="icon.jpg" type="image/icon type">
+        @keyframes animatezoom {
+            from {transform: scale(0)}
+            to {transform: scale(1)}
+        }
+
+        /* Change styles for span and cancel button on extra small screens */
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
+            }
+            .cancelbtn {
+                width: 100%;
+            }
+        }
+    </style>
+    <link rel="icon" href="icon.jpg" type="image/icon type">
 </head>
 <body>
- <div class="topnav" id="myTopnav">
-  <a href="/" >Acasa</a>
-  <a href="turnee" class="active">Turnee</a>
-  <a href="clasament">Clasament</a>
-  <a href="inscriere">Inscriere</a>
-     <a onclick="document.getElementById('id01').style.display='block'"> <span th:if="${currentUser.getId() == null}">
+<div class="topnav" id="myTopnav">
+    <a href="/" >Acasa</a>
+    <a href="turnee" class="active">Turnee</a>
+    <a href="clasament">Clasament</a>
+    <a href="inscriere">Inscriere</a>
+    <a onclick="document.getElementById('id01').style.display='block'"> <span th:if="${currentUser.getId() == null}">
       Cont</span><span th:unless="${currentUser.getId() == null}"><span th:text="${currentUser.username}">Default</span></span></a>
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
 </div>
 <table id="customers">
     <tr th:if="${currentUser.getAdmin()==true}">
         <td colspan="4">
-            <button type="button" class="collapsible" style="width:2%;height:1% ">+</button>
+            <button type="button" class="collapsible" style="width:2%;background: #04AA6D">+</button>
             <div class="content">
                 <form action="/action_page.php">
                     <label for="tname">Denumire turneu</label>
@@ -211,33 +212,39 @@ span.psw {
         </tr>
         <tr>
             <td colspan="4">
-            <button type="button" class="collapsible" style="width:5%">Participanti</button>
-            <div class="content">
-                <table style="width: 100%">
-                    <tr>
-                        <th style="background-color:dodgerblue">Rang</th>
-                        <th style="background-color:dodgerblue">Nume</th>
-                        <th style="background-color:dodgerblue">Prenume</th>
-                        <th style="background-color:dodgerblue">Varsta</th>
-                        <th style="background-color:dodgerblue">Numar de telefon</th>
-                    </tr>
-<!--                    Afiseaza participantii la turneul respectiv-->
-                    <tr th:each="person : ${turneu.persons}">
-                        <td th:text="${person.rank}">Default</td>
-                        <td th:text=" ${person.lastName}">Default</td>
-                        <td th:text="${person.name}">Default</td>
-                        <td th:text="${person.age}">Default</td>
-                        <td th:text="${person.phoneNumber}">Default</td>
-                    </tr>
-                </table>
-            </div>
+                <button type="button" class="collapsible" style="width:5%;background: #04AA6D">Participanti</button>
+                <div class="content">
+                    <table style="width: 100%">
+                        <tr>
+                            <th style="background-color:dodgerblue">Rang</th>
+                            <th style="background-color:dodgerblue">Nume</th>
+                            <th style="background-color:dodgerblue">Prenume</th>
+                            <th style="background-color:dodgerblue">Varsta</th>
+                            <th style="background-color:dodgerblue">Numar de telefon</th>
+                        </tr>
+                        <!--                    Afiseaza participantii la turneul respectiv-->
+                        <tr th:each="person : ${turneu.persons}">
+                            <td th:text="${person.rank}">Default</td>
+                            <td th:text=" ${person.lastName}">Default</td>
+                            <td th:text="${person.name}">Default</td>
+                            <td th:text="${person.age}">Default</td>
+                            <td th:text="${person.phoneNumber}">Default</td>
+                        </tr>
+                    </table>
+                </div>
             </td>
         </tr>
         <tr>
             <td colspan="4">
-                <button type="button" class="collapsible" style="width:5%">Partide</button>
+                <button type="button" class="collapsible" style="width:5%;background: #04AA6D">Partide</button>
                 <div class="content">
                     <table style="width: 100%">
+                        <tr>
+                            <th style="background-color:dodgerblue">Nume alb</th>
+                            <th style="background-color:dodgerblue">Nume negru</th>
+                            <th style="background-color:dodgerblue">Nume castigator</th>
+                        </tr>
+                        <!--                    Afiseaza participantii la turneul respectiv-->
                         <tr>
                             <th style="background-color:dodgerblue">Nume alb</th>
                             <th style="background-color:dodgerblue">Nume negru</th>
@@ -249,65 +256,79 @@ span.psw {
                             <td th:if="${partida.tournament.id}==${turneu.id}" th:text="${partida.getBlack().getName()}+' '+${partida.getBlack().getLastName()}">Default</td>
                             <td th:if="${partida.tournament.id}==${turneu.id}" th:text="${partida.getWinner()}?${partida.getWinner().getName()}+' '+${partida.getWinner().getLastName()} : 'Nu a fost ales inca'">Default</td>
                         </tr>
+                        <tr th:if="${currentUser.getAdmin()==true}">
+                            <td colspan="4">
+                                <div>
+                                    <form action="/action_page.php" id="colorform">
+                                        <label for="color">Choose a winning color:</label>
+                                        <select name="color" id="color" form="colorform">
+                                            <option value="white">Alb</option>
+                                            <option value="black">Negru</option>
+                                        </select>
+                                        <input type="submit">
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
                     </table>
                 </div>
             </td>
         </tr>
         <tr th:if="${currentUser.getAdmin()==true}">
             <td colspan="4">
-                <button type="button" class="collapsible" style="width:2%">+</button>
-            <div class="content">
-                <form action="saveGame" method="post">
-                    <label for="fname">Nume jucator alb</label>
-                    <input type="text" id="fname" name="cnpWhite" placeholder="Introduceti numele complet...">
-                    <label for="lname">Nume jucator negru</label>
-                    <input type="text" id="lname" name="cnpBlack" placeholder="Introduceti numele complet...">
-                    <label for="wname">Nume jucator castigator</label>
-                    <input type="text" id="wname" name="cnpWinner" placeholder="Introduceti numele complet...">
-                    <input type="hidden" name="turneu" th:value="${turneu.id}">
-                    <input type="submit" value="Submit">
-                </form>
-            </div>
+                <button type="button" class="collapsible" style="width:2%;background-color:#04AA6D">+</button>
+                <div class="content">
+                    <form action="saveGame" method="post">
+                        <label for="fname">Nume jucator alb</label>
+                        <input type="text" id="fname" name="cnpWhite" placeholder="Introduceti numele complet...">
+                        <label for="lname">Nume jucator negru</label>
+                        <input type="text" id="lname" name="cnpBlack" placeholder="Introduceti numele complet...">
+                        <label for="wname">Nume jucator castigator</label>
+                        <input type="text" id="wname" name="cnpWinner" placeholder="Introduceti numele complet...">
+                        <input type="hidden" name="turneu" th:value="${turneu.id}">
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
             </td>
         </tr>
     </th:block>
 </table>
 <div id="id01" class="modal">
-  <form class="modal-content animate" action="/action_page.php" method="post">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="/img_avatar2.png" alt="Avatar" class="avatar">
-    </div>
+    <form class="modal-content animate" action="/action_page.php" method="post">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <img src="/img_avatar2.png" alt="Avatar" class="avatar">
+        </div>
 
-      <div class="container">
-          <label for="uname"><b>Nume utilizator</b></label>
-          <input type="text" placeholder="Introduceti utilizator" id="uname" name="username">
+        <div class="container">
+            <label for="uname"><b>Nume utilizator</b></label>
+            <input type="text" placeholder="Introduceti utilizator" id="uname" name="username">
 
-          <label for="psw"><b>Parola</b></label>
-          <input type="password" placeholder="Introduceti parola" id="psw" name="password" >
-          <button type="submit" formaction="loginUser">Autentificare</button>
-          <button type="submit" formaction="saveUser">Inscriere</button>
-      </div>
-      <div class="container" style="background-color:#04aa6d" th:if="${currentUser.getId()!=null}">
-          <button type="submit" formaction="resetCurrentUser"  class="cancelbtn">Deconectare</button>
-      </div>
-  </form>
+            <label for="psw"><b>Parola</b></label>
+            <input type="password" placeholder="Introduceti parola" id="psw" name="password" >
+            <button type="submit" formaction="loginUser">Autentificare</button>
+            <button type="submit" formaction="saveUser">Inscriere</button>
+        </div>
+        <div class="container" style="background-color:#04aa6d" th:if="${currentUser.getId()!=null}">
+            <button type="submit" formaction="resetCurrentUser"  class="cancelbtn">Deconectare</button>
+        </div>
+    </form>
 </div>
- <script>
-     var coll = document.getElementsByClassName("collapsible");
-     var i;
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
 
-     for (i = 0; i < coll.length; i++) {
-         coll[i].addEventListener("click", function() {
-             this.classList.toggle("active");
-             var content = this.nextElementSibling;
-             if (content.style.display === "block") {
-                 content.style.display = "none";
-             } else {
-                 content.style.display = "block";
-             }
-         });
-     }
- </script>
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+</script>
 </body>
 </html>
