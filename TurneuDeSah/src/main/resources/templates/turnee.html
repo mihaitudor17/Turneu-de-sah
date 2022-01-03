@@ -176,6 +176,26 @@ span.psw {
 </div>
 </div>
 <table id="customers">
+    <tr th:if="${currentUser.getAdmin()==true}">
+        <td colspan="4">
+            <button type="button" class="collapsible" style="width:2%;height:1% ">+</button>
+            <div class="content">
+                <form action="/action_page.php">
+                    <label for="tname">Denumire turneu</label>
+                    <input type="text" id="tname" name="tournament_name" placeholder="Introduceti denumirea turneului...">
+                    <label for="phone">Numar de telefon</label>
+                    <input type="text" id="phone" name="tournament_phone" placeholder="Introduceti datele de contact...">
+                    <label for="date">Data turneului</label>
+                    <input type="date" id="date" name="tournament_date">
+                    <label for="hour">Ora turneului</label>
+                    <input type="hour" id="hour" name="tournament_hour">
+                    <label for="prize">Premiul acordat</label>
+                    <input type="number" id="prize" name="tournament_prize" placeholder="Introduceti premiul acordat...">
+                    <input type="submit" value="Adauga">
+                </form>
+            </div>
+        </td>
+    </tr>
     <tr>
         <th>Nume</th>
         <th>Data</th>
@@ -239,6 +259,23 @@ span.psw {
                 </div>
             </td>
         </tr>
+        <tr th:if="${currentUser.getAdmin()==true}">
+            <td colspan="4">
+                <button type="button" class="collapsible" style="width:2%">+</button>
+            <div class="content">
+                <form action="/action_page.php">
+                    <label for="fname">Nume jucator alb</label>
+                    <input type="text" id="fname" name="firstname" placeholder="Introduceti numele complet...">
+
+                    <label for="lname">Nume jucator negru</label>
+                    <input type="text" id="lname" name="lastname" placeholder="Introduceti numele complet...">
+                    <label for="wname">Nume jucator castigator</label>
+                    <input type="text" id="wname" name="winnername" placeholder="Introduceti numele complet...">
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+            </td>
+        </tr>
     </th:block>
 </table>
 <div id="id01" class="modal">
@@ -250,10 +287,10 @@ span.psw {
 
       <div class="container">
           <label for="uname"><b>Nume utilizator</b></label>
-          <input type="text" placeholder="Introduceti utilizator" id="uname" name="username" required>
+          <input type="text" placeholder="Introduceti utilizator" id="uname" name="username">
 
           <label for="psw"><b>Parola</b></label>
-          <input type="password" placeholder="Introduceti parola" id="psw" name="password" required>
+          <input type="password" placeholder="Introduceti parola" id="psw" name="password" >
           <button type="submit" formaction="loginUser">Autentificare</button>
           <button type="submit" formaction="saveUser">Inscriere</button>
       </div>
