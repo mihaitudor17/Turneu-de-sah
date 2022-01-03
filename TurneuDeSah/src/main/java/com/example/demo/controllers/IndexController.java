@@ -1,6 +1,8 @@
 package com.example.demo.controllers;
 
+import com.example.demo.classes.Game;
 import com.example.demo.classes.Person;
+import com.example.demo.classes.Tournament;
 import com.example.demo.classes.User;
 import com.example.demo.services.GameService;
 import com.example.demo.services.PersonService;
@@ -138,5 +140,27 @@ public class IndexController {
         currentUser.setPassword("");
         currentUser.setAdmin(false);
         return "redirect:";
+    }
+
+    @RequestMapping(value = "/saveGame", method = RequestMethod.POST)
+    public String saveGame(@RequestParam(value = "cnpWhite", required = true) String cnpWhite,
+                           @RequestParam(value = "cnpBlack", required = true) String cnpBlack,
+                           @RequestParam(value = "cnpWinner", required = false) String cnpWinner,
+                           @RequestParam(value = "turneu", required = false) Long idTurneu){
+        System.out.println("Das what i get\n\n\n\n");
+        System.out.println(idTurneu);
+        if(!personService.getPersonByCnp(cnpWhite).isPresent()&&
+                !personService.getPersonByCnp(cnpBlack).isPresent()
+        ){
+            return "redirect:cnpGresit";
+        }
+        Game game= new Game(personService.getPersonByCnp(cnpWhite).get(),
+                personService.getPersonByCnp(cnpBlack).get(),
+                personService.getPersonByCnp(cnpWinner).get(),
+                tournamentService.getTournament(idTurneu)
+                );
+
+        gameService.addNewGame(game);
+        return "redirect:turnee";
     }
 }

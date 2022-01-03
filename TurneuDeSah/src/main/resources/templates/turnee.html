@@ -245,9 +245,9 @@ span.psw {
                         </tr>
                         <!--                    Afiseaza participantii la turneul respectiv-->
                         <tr th:each="partida : ${partide}">
-                            <td th:if="${partida.id}==${turneu.id}" th:text="${partida.getWhite().getName()}+' '+${partida.getWhite().getLastName()}">Default</td>
-                            <td th:if="${partida.id}==${turneu.id}" th:text="${partida.getBlack().getName()}+' '+${partida.getBlack().getLastName()}">Default</td>
-                            <td th:if="${partida.id}==${turneu.id}" th:text="${partida.getWinner()}?${partida.getWinner().getName()}+' '+${partida.getWinner().getLastName()} : 'Nu a fost ales inca'">Default</td>
+                            <td th:if="${partida.tournament.id}==${turneu.id}" th:text="${partida.getWhite().getName()}+' '+${partida.getWhite().getLastName()}">Default</td>
+                            <td th:if="${partida.tournament.id}==${turneu.id}" th:text="${partida.getBlack().getName()}+' '+${partida.getBlack().getLastName()}">Default</td>
+                            <td th:if="${partida.tournament.id}==${turneu.id}" th:text="${partida.getWinner()}?${partida.getWinner().getName()}+' '+${partida.getWinner().getLastName()} : 'Nu a fost ales inca'">Default</td>
                         </tr>
                     </table>
                 </div>
@@ -257,14 +257,14 @@ span.psw {
             <td colspan="4">
                 <button type="button" class="collapsible" style="width:2%">+</button>
             <div class="content">
-                <form action="/action_page.php">
+                <form action="saveGame" method="post">
                     <label for="fname">Nume jucator alb</label>
-                    <input type="text" id="fname" name="firstname" placeholder="Introduceti numele complet...">
-
+                    <input type="text" id="fname" name="cnpWhite" placeholder="Introduceti numele complet...">
                     <label for="lname">Nume jucator negru</label>
-                    <input type="text" id="lname" name="lastname" placeholder="Introduceti numele complet...">
+                    <input type="text" id="lname" name="cnpBlack" placeholder="Introduceti numele complet...">
                     <label for="wname">Nume jucator castigator</label>
-                    <input type="text" id="wname" name="winnername" placeholder="Introduceti numele complet...">
+                    <input type="text" id="wname" name="cnpWinner" placeholder="Introduceti numele complet...">
+                    <input type="hidden" name="turneu" th:value="${turneu.id}">
                     <input type="submit" value="Submit">
                 </form>
             </div>

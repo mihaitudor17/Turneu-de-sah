@@ -42,6 +42,7 @@ public class Game {
         this.id = id;
     }
 
+
     public Person getWhite() {
         return white;
     }

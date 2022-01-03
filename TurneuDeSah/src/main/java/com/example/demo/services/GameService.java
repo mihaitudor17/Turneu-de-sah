@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import com.example.demo.classes.Game;
+import com.example.demo.classes.Person;
 import com.example.demo.classes.Tournament;
 import com.example.demo.repositories.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,4 +35,7 @@ public class GameService {
         return games;
     }
 
+    public void addNewGame(Game game) {
+        gameRepository.save(game);
+    }
 }
