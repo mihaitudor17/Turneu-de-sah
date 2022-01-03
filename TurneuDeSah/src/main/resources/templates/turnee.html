@@ -181,17 +181,17 @@
         <td colspan="4">
             <button type="button" class="collapsible" style="width:2%;background: #04AA6D">+</button>
             <div class="content">
-                <form action="/action_page.php">
+                <form action="saveTournament" method="post">
                     <label for="tname">Denumire turneu</label>
-                    <input type="text" id="tname" name="tournament_name" placeholder="Introduceti denumirea turneului...">
+                    <input type="text" id="tname" name="name" placeholder="Introduceti denumirea turneului...">
                     <label for="phone">Numar de telefon</label>
-                    <input type="text" id="phone" name="tournament_phone" placeholder="Introduceti datele de contact...">
+                    <input type="text" id="phone" name="phoneNumber" placeholder="Introduceti datele de contact...">
                     <label for="date">Data turneului</label>
-                    <input type="date" id="date" name="tournament_date">
+                    <input type="date" id="date" name="date">
                     <label for="hour">Ora turneului</label>
-                    <input type="hour" id="hour" name="tournament_hour">
+                    <input type="hour" id="hour" name="time">
                     <label for="prize">Premiul acordat</label>
-                    <input type="number" id="prize" name="tournament_prize" placeholder="Introduceti premiul acordat...">
+                    <input type="number" id="prize" name="prizeMoney" placeholder="Introduceti premiul acordat...">
                     <input type="submit" value="Adauga">
                 </form>
             </div>

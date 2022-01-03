@@ -185,4 +185,19 @@ public class IndexController {
         System.out.println("Cringe");
         return "redirect:turnee";
     }
+
+    @RequestMapping(value="/saveTournament",method = RequestMethod.POST)
+    public String saveTournament(@ModelAttribute Tournament tournament){
+        System.out.println("Cringe");
+        Tournament newTournament=new Tournament(
+                tournament.getName(),
+                tournament.getDate(),
+                tournament.getTime(),
+                tournament.getPrizeMoney(),
+                tournament.getPhoneNumber(),
+                true
+        );
+        tournamentService.addNewTournament(newTournament);
+        return "redirect:turnee";
+    }
 }

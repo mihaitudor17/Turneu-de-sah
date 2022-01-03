@@ -1,5 +1,7 @@
 package com.example.demo.classes;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -21,7 +23,9 @@ public class Tournament {
     )
     private Long id;
     private String name;
+    @DateTimeFormat(pattern= "yyyy-MM-dd")
     private LocalDate date;
+    @DateTimeFormat(pattern= "HH:mm:ss")
     private LocalTime time;
     private double prizeMoney;
     private String phoneNumber;
