@@ -245,19 +245,14 @@
                             <th style="background-color:dodgerblue">Nume castigator</th>
                         </tr>
                         <!--                    Afiseaza participantii la turneul respectiv-->
-                        <tr>
-                            <th style="background-color:dodgerblue">Nume alb</th>
-                            <th style="background-color:dodgerblue">Nume negru</th>
-                            <th style="background-color:dodgerblue">Nume castigator</th>
-                        </tr>
-                        <!--                    Afiseaza participantii la turneul respectiv-->
-                        <tr th:each="partida : ${partide}">
+                        <span th:each="partida : ${partide}">
+                            <tr>
                             <td th:if="${partida.tournament.id}==${turneu.id}" th:text="${partida.getWhite().getName()}+' '+${partida.getWhite().getLastName()}">Default</td>
                             <td th:if="${partida.tournament.id}==${turneu.id}" th:text="${partida.getBlack().getName()}+' '+${partida.getBlack().getLastName()}">Default</td>
                             <td th:if="${partida.tournament.id}==${turneu.id}" th:text="${partida.getWinner()}?${partida.getWinner().getName()}+' '+${partida.getWinner().getLastName()} : 'Nu a fost ales inca'">Default</td>
-                        </tr>
-                        <tr th:if="${currentUser.getAdmin()==true}">
-                            <td colspan="4">
+                            </tr>
+                            <tr  th:if="${currentUser.getAdmin()==true} and ${partida.tournament.id}==${turneu.id} and ${partida.winner}==null" colspan="4">
+                                <td>
                                 <div>
                                     <form action="/action_page.php" id="colorform">
                                         <label for="color">Choose a winning color:</label>
@@ -268,8 +263,10 @@
                                         <input type="submit">
                                     </form>
                                 </div>
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
+                        </span>
+
                     </table>
                 </div>
             </td>
