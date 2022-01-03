@@ -35,9 +35,7 @@ public class PersonService {
         return personRepository.findById(id).get();
     }
 
-//    public List<Person> getParticipants(Long tournamentId){
-//        List<Person> participants=new ArrayList<>();
-//        Tournament tournament=tour
-//                return participants;
-//    }
+    public Optional<Person> getPersonByCnp(String cnp){
+        return personRepository.findByCnp(cnp);
+    }
 }

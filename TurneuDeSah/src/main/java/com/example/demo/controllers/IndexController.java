@@ -86,6 +86,9 @@ public class IndexController {
         if(currentUser.getId()==null){
             return "redirect:trebuie_sa_fi_logat_mai_intai!";
         }
+        if(personService.getPersonByCnp(person.getCnp()).isPresent()){
+            return "redirect:cnp_deja_inregistrat!";
+        }
         Person newPerson = new Person();
         if (checkboxValue != null) {
             newPerson.setActive(true);
