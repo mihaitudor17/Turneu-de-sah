@@ -239,21 +239,15 @@ span.psw {
                 <div class="content">
                     <table style="width: 100%">
                         <tr>
-                            <th style="background-color:dodgerblue">Culoare</th>
-                            <th style="background-color:dodgerblue">Nume</th>
-                            <th style="background-color:dodgerblue">Prenume</th>
-                            <th style="background-color:dodgerblue">Culoare</th>
-                            <th style="background-color:dodgerblue">Nume</th>
-                            <th style="background-color:dodgerblue">Prenume</th>
-                            <th style="background-color:dodgerblue">Castigator</th>
+                            <th style="background-color:dodgerblue">Nume alb</th>
+                            <th style="background-color:dodgerblue">Nume negru</th>
+                            <th style="background-color:dodgerblue">Nume castigator</th>
                         </tr>
                         <!--                    Afiseaza participantii la turneul respectiv-->
-                        <tr th:each="person : ${turneu.persons}">
-                            <td th:text="${person.rank}">Default</td>
-                            <td th:text=" ${person.lastName}">Default</td>
-                            <td th:text="${person.name}">Default</td>
-                            <td th:text="${person.age}">Default</td>
-                            <td th:text="${person.phoneNumber}">Default</td>
+                        <tr th:each="partida : ${partide}">
+                            <td th:if="${partida.id}==${turneu.id}" th:text="${partida.getWhite().getName()}+' '+${partida.getWhite().getLastName()}">Default</td>
+                            <td th:if="${partida.id}==${turneu.id}" th:text="${partida.getBlack().getName()}+' '+${partida.getBlack().getLastName()}">Default</td>
+                            <td th:if="${partida.id}==${turneu.id}" th:text="${partida.getWinner()}?${partida.getWinner().getName()}+' '+${partida.getWinner().getLastName()} : 'Nu a fost ales inca'">Default</td>
                         </tr>
                     </table>
                 </div>

@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import com.example.demo.classes.Person;
 import com.example.demo.classes.User;
+import com.example.demo.services.GameService;
 import com.example.demo.services.PersonService;
 import com.example.demo.services.TournamentService;
 import com.example.demo.services.UserService;
@@ -20,7 +21,7 @@ public class IndexController {
     private PersonService personService;
     private UserService userService;
     public User currentUser = new User("Curent", "Utilizator", true);
-
+    private GameService gameService;
 
     @Autowired
     public void TournamentController(TournamentService tournamentService) {
@@ -37,6 +38,11 @@ public class IndexController {
         this.userService = userService;
     }
 
+    @Autowired
+    public void GameController(GameService gameService) {
+        this.gameService = gameService;
+    }
+
     @RequestMapping("/")
     public String index(Model model) {
         model.addAttribute("currentUser", currentUser);
@@ -49,9 +55,9 @@ public class IndexController {
         return "redirect:turnee";
     }
 
-     @RequestMapping(value = "/clasament")
+    @RequestMapping(value = "/clasament")
     public String getAllPersons(Model model) {
-         model.addAttribute("currentUser", currentUser);
+        model.addAttribute("currentUser", currentUser);
         List<Person> persons = personService.getAllPersons();
         persons.sort((Person p1, Person p2)->p2.getRank()-p1.getRank());
         model.addAttribute("clasament", persons);
@@ -62,6 +68,7 @@ public class IndexController {
     public String turnee(Model model) {
         model.addAttribute("currentUser", currentUser);
         model.addAttribute("turnee", tournamentService.getAllTournaments());
+        model.addAttribute("partide", gameService.getAllGames());
         return "turnee";
     }
 
