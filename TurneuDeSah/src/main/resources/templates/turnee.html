@@ -254,12 +254,14 @@
                             <tr  th:if="${currentUser.getAdmin()==true} and ${partida.tournament.id}==${turneu.id} and ${partida.winner}==null" colspan="4">
                                 <td>
                                 <div>
-                                    <form action="/action_page.php" id="colorform">
+                                    <form action="updateWinner" id="colorform" method="post">
                                         <label for="color">Choose a winning color:</label>
-                                        <select name="color" id="color" form="colorform">
-                                            <option value="white">Alb</option>
-                                            <option value="black">Negru</option>
-                                        </select>
+<!--                                        <select th:with="ceva" th:name="xd" id="color" form="colorform">-->
+<!--                                            <option th:value="white">Alb</option>-->
+<!--                                            <option th:value="black">Negru</option>-->
+<!--                                        </select>-->
+                                        <input type="text" name="color" placeholder="Select either white or black">
+                                        <input type="hidden" name="game" th:value="${partida.id}">
                                         <input type="submit">
                                     </form>
                                 </div>

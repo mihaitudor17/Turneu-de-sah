@@ -13,7 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 
@@ -161,6 +163,26 @@ public class IndexController {
                 );
 
         gameService.addNewGame(game);
+        return "redirect:turnee";
+    }
+    @Transactional
+    @RequestMapping(value = "/updateWinner", method = RequestMethod.POST)
+    public String updateWinner(@RequestParam(value = "color", required = false) String color,
+                               @RequestParam(value = "game", required = true) Long gameId){
+        System.out.println("\n\n\n\n\n\n\n");
+        System.out.println(color);
+        System.out.println(gameId);
+        System.out.println("Cringe");
+        if(Objects.equals(color, "black")){
+            System.out.println("Got to black");
+            gameService.getGameById(gameId).get().setWinner(
+                    gameService.getGameById(gameId).get().getBlack());
+        }else if(Objects.equals(color, "white")){
+            System.out.println("GOt to white");
+            gameService.getGameById(gameId).get().setWinner(
+                    gameService.getGameById(gameId).get().getWhite());
+        }
+        System.out.println("Cringe");
         return "redirect:turnee";
     }
 }
