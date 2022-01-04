@@ -11,4 +11,5 @@ import java.util.List;
 @Repository
 public interface TournamentRepository extends JpaRepository<Tournament,Long> {
     List<Tournament> findByDateGreaterThanEqual(@Param("date") LocalDate date);
+    //Long deleteById(@Param("id") Long id);
 }

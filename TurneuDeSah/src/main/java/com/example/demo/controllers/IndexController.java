@@ -63,7 +63,7 @@ public class IndexController {
     public String getAllPersons(Model model) {
         model.addAttribute("currentUser", currentUser);
         List<Person> persons = personService.getAllPersons();
-        persons.sort((Person p1, Person p2)->p2.getRank()-p1.getRank());
+        persons.sort((Person p1, Person p2) -> p2.getRank() - p1.getRank());
         model.addAttribute("clasament", persons);
         return "clasament";
     }
@@ -87,10 +87,10 @@ public class IndexController {
     public String savePerson(@ModelAttribute Person person,
                              @RequestParam(value = "isActive", required = false) String checkboxValue,
                              @RequestParam(value = "selectedTournament", required = false) Long selectedTournament) {
-        if(currentUser.getId()==null){
+        if (currentUser.getId() == null) {
             return "redirect:trebuie_sa_fi_logat_mai_intai!";
         }
-        if(personService.getPersonByCnp(person.getCnp()).isPresent()){
+        if (personService.getPersonByCnp(person.getCnp()).isPresent()) {
             return "redirect:cnp_deja_inregistrat!";
         }
         Person newPerson = new Person();
@@ -125,7 +125,7 @@ public class IndexController {
 
     @RequestMapping(value = "/saveUser", method = RequestMethod.POST)
     public String save(@ModelAttribute User user) {
-        if(userService.getUserByUsername(user.getUsername()).isPresent()){
+        if (userService.getUserByUsername(user.getUsername()).isPresent()) {
             return "redirect:";
         }
         User newUser = new User();
@@ -135,6 +135,7 @@ public class IndexController {
         userService.addNewUser(newUser);
         return "redirect:";
     }
+
     @RequestMapping(value = "/resetCurrentUser", method = RequestMethod.POST)
     public String resetCurrentUser() {
         currentUser.setId(null);
@@ -148,48 +149,43 @@ public class IndexController {
     public String saveGame(@RequestParam(value = "cnpWhite", required = true) String cnpWhite,
                            @RequestParam(value = "cnpBlack", required = true) String cnpBlack,
                            @RequestParam(value = "cnpWinner", required = false) String cnpWinner,
-                           @RequestParam(value = "turneu", required = false) Long idTurneu){
+                           @RequestParam(value = "turneu", required = false) Long idTurneu) {
         System.out.println("Das what i get\n\n\n\n");
         System.out.println(idTurneu);
-        if(!personService.getPersonByCnp(cnpWhite).isPresent()&&
+        if (!personService.getPersonByCnp(cnpWhite).isPresent() &&
                 !personService.getPersonByCnp(cnpBlack).isPresent()
-        ){
+        ) {
             return "redirect:cnpGresit";
         }
-        Game game= new Game(personService.getPersonByCnp(cnpWhite).get(),
+        Game game = new Game(personService.getPersonByCnp(cnpWhite).get(),
                 personService.getPersonByCnp(cnpBlack).get(),
                 personService.getPersonByCnp(cnpWinner).get(),
                 tournamentService.getTournament(idTurneu)
-                );
+        );
 
         gameService.addNewGame(game);
         return "redirect:turnee";
     }
+
     @Transactional
     @RequestMapping(value = "/updateWinner", method = RequestMethod.POST)
     public String updateWinner(@RequestParam(value = "color", required = false) String color,
-                               @RequestParam(value = "game", required = true) Long gameId){
-        System.out.println("\n\n\n\n\n\n\n");
-        System.out.println(color);
-        System.out.println(gameId);
-        System.out.println("Cringe");
-        if(Objects.equals(color, "black")){
+                               @RequestParam(value = "game", required = true) Long gameId) {
+        if (Objects.equals(color, "black")) {
             System.out.println("Got to black");
             gameService.getGameById(gameId).get().setWinner(
                     gameService.getGameById(gameId).get().getBlack());
-        }else if(Objects.equals(color, "white")){
+        } else if (Objects.equals(color, "white")) {
             System.out.println("GOt to white");
             gameService.getGameById(gameId).get().setWinner(
                     gameService.getGameById(gameId).get().getWhite());
         }
-        System.out.println("Cringe");
         return "redirect:turnee";
     }
 
-    @RequestMapping(value="/saveTournament",method = RequestMethod.POST)
-    public String saveTournament(@ModelAttribute Tournament tournament){
-        System.out.println("Cringe");
-        Tournament newTournament=new Tournament(
+    @RequestMapping(value = "/saveTournament", method = RequestMethod.POST)
+    public String saveTournament(@ModelAttribute Tournament tournament) {
+        Tournament newTournament = new Tournament(
                 tournament.getName(),
                 tournament.getDate(),
                 tournament.getTime(),
@@ -198,6 +194,13 @@ public class IndexController {
                 true
         );
         tournamentService.addNewTournament(newTournament);
+        return "redirect:turnee";
+    }
+
+    @RequestMapping(value = "/deleteTournament", method = RequestMethod.POST)
+    public String deleteTournament(@RequestParam(value = "delete", required = true) Long id) {
+        System.out.println(id);
+        tournamentService.deleteByName(id);
         return "redirect:turnee";
     }
 }

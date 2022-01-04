@@ -43,4 +43,8 @@ public class TournamentService {
     public Tournament getTournament(Long id){
         return tournamentRepository.findById(id).get();
     }
+
+    public void deleteByName(Long id){
+        tournamentRepository.deleteById(id);
+    }
 }
