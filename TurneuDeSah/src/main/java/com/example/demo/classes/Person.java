@@ -34,7 +34,7 @@ public class Person {
     private boolean isActive;
     @ManyToOne
     private User user;
-    @ManyToMany(fetch=FetchType.LAZY,cascade = CascadeType.ALL, mappedBy="persons")
+    @ManyToMany(fetch=FetchType.LAZY,cascade = CascadeType.REMOVE, mappedBy="persons")
     private Set<Tournament> tournaments=new HashSet<>();
 
     public Person() {

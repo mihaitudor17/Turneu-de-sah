@@ -15,4 +15,5 @@ import java.util.Optional;
 public interface GameRepository extends JpaRepository<Game,Long> {
     List<Game> findByTournament(@Param("tournament") Tournament tournament);
     Optional<Game> findById(@Param("id") Long id);
+    void deleteByTournament(@Param("tournament") Tournament tournament);
 }

@@ -197,11 +197,15 @@ public class IndexController {
         return "redirect:turnee";
     }
 
+    @Transactional
     @RequestMapping(value = "/deleteTournament", method = RequestMethod.POST)
     public String deleteTournament(@RequestParam(value = "delete", required = true) Long id) {
-        System.out.println(id);
         if(!tournamentService.getTournament(id).isPresent())
             return "redirect:turneu inexistent";
+        while(!gameService.getGamesByTournament(tournamentService.getTournament(id).get()).isEmpty()) {
+           gameService.deleteByTournament(tournamentService.getTournament(id).get());
+        }
+
         tournamentService.deleteById(id);
         return "redirect:turnee";
     }

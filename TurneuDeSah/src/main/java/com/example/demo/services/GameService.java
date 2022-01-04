@@ -41,4 +41,7 @@ public class GameService {
     public void addNewGame(Game game) {
         gameRepository.save(game);
     }
+    public void deleteByTournament(Tournament tournament){
+        gameRepository.deleteByTournament(tournament);
+    }
 }
