@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TournamentService {
@@ -40,11 +41,11 @@ public class TournamentService {
                 forEach(tournaments::add);
         return tournaments;
     }
-    public Tournament getTournament(Long id){
-        return tournamentRepository.findById(id).get();
+    public Optional<Tournament> getTournament(Long id){
+        return tournamentRepository.findById(id);
     }
 
-    public void deleteByName(Long id){
+    public void deleteById(Long id){
         tournamentRepository.deleteById(id);
     }
 }

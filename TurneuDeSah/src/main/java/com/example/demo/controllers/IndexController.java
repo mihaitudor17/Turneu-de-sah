@@ -107,8 +107,8 @@ public class IndexController {
         newPerson.setPhoneNumber(person.getPhoneNumber());
         newPerson.setRank(person.getRank());
         newPerson.setUser(currentUser);
-        newPerson.getTournaments().add(tournamentService.getTournament(selectedTournament));
-        tournamentService.getTournament(selectedTournament).getPersons().add(newPerson);
+        newPerson.getTournaments().add(tournamentService.getTournament(selectedTournament).get());
+        tournamentService.getTournament(selectedTournament).get().getPersons().add(newPerson);
         personService.addNewPerson(newPerson);
         return "redirect:clasament";
     }
@@ -160,7 +160,7 @@ public class IndexController {
         Game game = new Game(personService.getPersonByCnp(cnpWhite).get(),
                 personService.getPersonByCnp(cnpBlack).get(),
                 personService.getPersonByCnp(cnpWinner).get(),
-                tournamentService.getTournament(idTurneu)
+                tournamentService.getTournament(idTurneu).get()
         );
 
         gameService.addNewGame(game);
@@ -200,7 +200,9 @@ public class IndexController {
     @RequestMapping(value = "/deleteTournament", method = RequestMethod.POST)
     public String deleteTournament(@RequestParam(value = "delete", required = true) Long id) {
         System.out.println(id);
-        tournamentService.deleteByName(id);
+        if(!tournamentService.getTournament(id).isPresent())
+            return "redirect:turneu inexistent";
+        tournamentService.deleteById(id);
         return "redirect:turnee";
     }
 }
