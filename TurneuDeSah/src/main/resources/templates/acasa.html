@@ -238,6 +238,9 @@ span.psw {
          </tr>
      </th:block>
  </table>
+ <div th:if="${errorType}==''">Fara greseala</div>
+ <div th:text="${errorType}">Eroare</div>
+
  <script>
      var coll = document.getElementsByClassName("collapsible");
      var i;

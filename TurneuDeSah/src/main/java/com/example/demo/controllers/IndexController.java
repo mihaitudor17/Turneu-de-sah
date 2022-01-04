@@ -26,6 +26,7 @@ public class IndexController {
     private UserService userService;
     public User currentUser = new User("Curent", "Utilizator", true);
     private GameService gameService;
+    private String errorType="";
 
     @Autowired
     public void TournamentController(TournamentService tournamentService) {
@@ -51,6 +52,8 @@ public class IndexController {
     public String index(Model model) {
         model.addAttribute("currentUser", currentUser);
         model.addAttribute("acasa", tournamentService.getFutureTournaments());
+        model.addAttribute("errorType", errorType);
+        errorType="";
         return "acasa";
     }
 
@@ -88,17 +91,15 @@ public class IndexController {
                              @RequestParam(value = "isActive", required = false) String checkboxValue,
                              @RequestParam(value = "selectedTournament", required = false) Long selectedTournament) {
         if (currentUser.getId() == null) {
-            return "redirect:trebuie_sa_fi_logat_mai_intai!";
+            errorType="youMustBeLoggedInFirst";
+            return "redirect:";
         }
         if (personService.getPersonByCnp(person.getCnp()).isPresent()) {
-            return "redirect:cnp_deja_inregistrat!";
+            errorType="cnpAlreadyExistent";
+            return "redirect:";
         }
         Person newPerson = new Person();
-        if (checkboxValue != null) {
-            newPerson.setActive(true);
-        } else {
-            newPerson.setActive(false);
-        }
+        newPerson.setActive(checkboxValue != null);
         newPerson.setName(person.getName());
         newPerson.setLastName(person.getLastName());
         newPerson.setCnp(person.getCnp());
@@ -110,6 +111,7 @@ public class IndexController {
         newPerson.getTournaments().add(tournamentService.getTournament(selectedTournament).get());
         tournamentService.getTournament(selectedTournament).get().getPersons().add(newPerson);
         personService.addNewPerson(newPerson);
+        errorType="";
         return "redirect:clasament";
     }
 
@@ -117,15 +119,18 @@ public class IndexController {
     public String login(@ModelAttribute User user) {
         Optional<User> login = userService.getUserByUsernameAndPassword(user.getUsername(), user.getPassword());
         if (!login.isPresent()) {
-            return "redirect:usersauparolaincorecta";
+            errorType="usernameAndPasswordDontMatch";
+            return "redirect:";
         }
         currentUser = login.get();
+        errorType="";
         return "redirect:";
     }
 
     @RequestMapping(value = "/saveUser", method = RequestMethod.POST)
     public String save(@ModelAttribute User user) {
         if (userService.getUserByUsername(user.getUsername()).isPresent()) {
+            errorType="usernameAlreadyTaken";
             return "redirect:";
         }
         User newUser = new User();
@@ -133,6 +138,7 @@ public class IndexController {
         newUser.setPassword(user.getPassword());
         newUser.setAdmin(false);
         userService.addNewUser(newUser);
+        errorType="";
         return "redirect:";
     }
 
@@ -150,12 +156,11 @@ public class IndexController {
                            @RequestParam(value = "cnpBlack", required = true) String cnpBlack,
                            @RequestParam(value = "cnpWinner", required = false) String cnpWinner,
                            @RequestParam(value = "turneu", required = false) Long idTurneu) {
-        System.out.println("Das what i get\n\n\n\n");
-        System.out.println(idTurneu);
         if (!personService.getPersonByCnp(cnpWhite).isPresent() &&
                 !personService.getPersonByCnp(cnpBlack).isPresent()
         ) {
-            return "redirect:cnpGresit";
+            errorType="wrongCnp";
+            return "redirect:";
         }
         Game game = new Game(personService.getPersonByCnp(cnpWhite).get(),
                 personService.getPersonByCnp(cnpBlack).get(),
@@ -164,6 +169,7 @@ public class IndexController {
         );
 
         gameService.addNewGame(game);
+        errorType="";
         return "redirect:turnee";
     }
 
@@ -172,11 +178,9 @@ public class IndexController {
     public String updateWinner(@RequestParam(value = "color", required = false) String color,
                                @RequestParam(value = "game", required = true) Long gameId) {
         if (Objects.equals(color, "negru")) {
-            System.out.println("Got to black");
             gameService.getGameById(gameId).get().setWinner(
                     gameService.getGameById(gameId).get().getBlack());
         } else if (Objects.equals(color, "alb")) {
-            System.out.println("GOt to white");
             gameService.getGameById(gameId).get().setWinner(
                     gameService.getGameById(gameId).get().getWhite());
         }
@@ -200,13 +204,16 @@ public class IndexController {
     @Transactional
     @RequestMapping(value = "/deleteTournament", method = RequestMethod.POST)
     public String deleteTournament(@RequestParam(value = "delete", required = true) Long id) {
-        if(!tournamentService.getTournament(id).isPresent())
-            return "redirect:turneu inexistent";
+        if(!tournamentService.getTournament(id).isPresent()) {
+            errorType="unexistingTournament";
+            return "redirect:";
+        }
         while(!gameService.getGamesByTournament(tournamentService.getTournament(id).get()).isEmpty()) {
            gameService.deleteByTournament(tournamentService.getTournament(id).get());
         }
 
         tournamentService.deleteById(id);
+        errorType="";
         return "redirect:turnee";
     }
 }
