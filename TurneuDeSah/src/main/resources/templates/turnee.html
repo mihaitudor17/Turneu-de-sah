@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -197,14 +197,6 @@
             </div>
         </td>
     </tr>
-        <tr>
-            <td colspan="4">
-                <form method="post">
-                    <input type="hidden" name="delete" th:value="5">
-                    <button type="submit" formaction="deleteTournament">lmao</button>
-                </form>
-            </td>
-        </tr>
     <tr>
         <th>Nume</th>
         <th>Data</th>
@@ -263,12 +255,12 @@
                                 <td>
                                 <div>
                                     <form action="updateWinner" id="colorform" method="post">
-                                        <label for="color">Choose a winning color:</label>
+                                        <label for="color">Alegeti culoarea castigatoare:</label>
 <!--                                        <select th:with="ceva" th:name="xd" id="color" form="colorform">-->
 <!--                                            <option th:value="white">Alb</option>-->
 <!--                                            <option th:value="black">Negru</option>-->
 <!--                                        </select>-->
-                                        <input type="text" name="color" placeholder="Select either white or black">
+                                        <input type="text" name="color" placeholder="Algeti alb sau negru...">
                                         <input type="hidden" name="game" th:value="${partida.id}">
                                         <input type="submit">
                                     </form>
@@ -286,16 +278,28 @@
                 <button type="button" class="collapsible" style="width:2%;background-color:#04AA6D">+</button>
                 <div class="content">
                     <form action="saveGame" method="post">
-                        <label for="fname">Nume jucator alb</label>
-                        <input type="text" id="fname" name="cnpWhite" placeholder="Introduceti numele complet...">
-                        <label for="lname">Nume jucator negru</label>
-                        <input type="text" id="lname" name="cnpBlack" placeholder="Introduceti numele complet...">
-                        <label for="wname">Nume jucator castigator</label>
-                        <input type="text" id="wname" name="cnpWinner" placeholder="Introduceti numele complet...">
+                        <label for="fname">CNP jucator alb</label>
+                        <input type="text" id="fname" name="cnpWhite" placeholder="Introduceti CNP complet...">
+                        <label for="lname">CNP jucator negru</label>
+                        <input type="text" id="lname" name="cnpBlack" placeholder="Introduceti CNP complet...">
+                        <label for="wname">CNP jucator castigator</label>
+                        <input type="text" id="wname" name="cnpWinner" placeholder="Introduceti CNP complet...">
                         <input type="hidden" name="turneu" th:value="${turneu.id}">
-                        <input type="submit" value="Submit">
+                        <input type="submit" value="Adaugare">
                     </form>
                 </div>
+            </td>
+        </tr>
+        <tr>
+        </tr>
+        <tr th:if="${currentUser.getAdmin()==true}">
+            <td colspan="4">
+                <form method="post">
+                    <input type="hidden" name="delete" th:value="${turneu.id}">
+
+<!--                    butoanele sunt responsive doar ca trebuie si ca fontul sa fie responsive-->
+                    <button type="submit" formaction="deleteTournament" style="width: 2%;background-color: red">-</button>
+                </form>
             </td>
         </tr>
     </th:block>

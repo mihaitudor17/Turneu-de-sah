@@ -171,11 +171,11 @@ public class IndexController {
     @RequestMapping(value = "/updateWinner", method = RequestMethod.POST)
     public String updateWinner(@RequestParam(value = "color", required = false) String color,
                                @RequestParam(value = "game", required = true) Long gameId) {
-        if (Objects.equals(color, "black")) {
+        if (Objects.equals(color, "negru")) {
             System.out.println("Got to black");
             gameService.getGameById(gameId).get().setWinner(
                     gameService.getGameById(gameId).get().getBlack());
-        } else if (Objects.equals(color, "white")) {
+        } else if (Objects.equals(color, "alb")) {
             System.out.println("GOt to white");
             gameService.getGameById(gameId).get().setWinner(
                     gameService.getGameById(gameId).get().getWhite());
