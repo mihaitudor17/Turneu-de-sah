@@ -1,5 +1,7 @@
 package com.example.demo.classes;
 
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
 
 @Entity
@@ -20,7 +22,7 @@ public class Game {
     private Person white;
     @ManyToOne
     private Person black;
-    @ManyToOne
+    @ManyToOne(optional = true,fetch = FetchType.LAZY)
     private Person winner;
     @ManyToOne
     private Tournament tournament;
