@@ -219,6 +219,7 @@
                             <th style="background-color:dodgerblue">Rang</th>
                             <th style="background-color:dodgerblue">Nume</th>
                             <th style="background-color:dodgerblue">Prenume</th>
+                            <th style="background-color:dodgerblue" th:if="${currentUser.admin}==true">Cnp</th>
                             <th style="background-color:dodgerblue">Varsta</th>
                             <th style="background-color:dodgerblue">Numar de telefon</th>
                         </tr>
@@ -227,6 +228,7 @@
                             <td th:text="${person.rank}">Default</td>
                             <td th:text=" ${person.lastName}">Default</td>
                             <td th:text="${person.name}">Default</td>
+                            <td th:text="${person.cnp}" th:if="${currentUser.admin}==true">Default</td>
                             <td th:text="${person.age}">Default</td>
                             <td th:text="${person.phoneNumber}">Default</td>
                         </tr>
