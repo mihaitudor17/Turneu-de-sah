@@ -151,6 +151,7 @@ public class IndexController {
         return "redirect:";
     }
 
+    @Transactional
     @RequestMapping(value = "/saveGame", method = RequestMethod.POST)
     public String saveGame(@RequestParam(value = "cnpWhite", required = true) String cnpWhite,
                            @RequestParam(value = "cnpBlack", required = true) String cnpBlack,
@@ -168,6 +169,21 @@ public class IndexController {
                     personService.getPersonByCnp(cnpWinner).get(),
                     tournamentService.getTournament(idTurneu).get());
             gameService.addNewGame(game);
+
+            if(Objects.equals(cnpWinner, cnpBlack)){
+                int rankBlack = personService.getPerson(game.getBlack().getId()).getRank();
+                personService.getPerson(game.getBlack().getId()).setRank(rankBlack + 15);
+
+                int rankWhite = personService.getPerson(game.getWhite().getId()).getRank();
+                personService.getPerson(game.getWhite().getId()).setRank(rankWhite - 15);
+            }else{
+
+                int rankBlack = personService.getPerson(game.getBlack().getId()).getRank();
+                personService.getPerson(game.getBlack().getId()).setRank(rankBlack - 15);
+
+                int rankWhite = personService.getPerson(game.getWhite().getId()).getRank();
+                personService.getPerson(game.getWhite().getId()).setRank(rankWhite + 15);
+            }
         } else {
             Game game = new Game(personService.getPersonByCnp(cnpWhite).get(),
                     personService.getPersonByCnp(cnpBlack).get(),
